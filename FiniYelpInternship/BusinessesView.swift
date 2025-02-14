@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct BusinessesView: View {
+    @State var vm = BusinessesViewModel()
     var body: some View {
         VStack{
+            Text(vm.businesses.count.description)
             cardsView
             previousAndNextButtons
+        }.task{
+            await vm.getBusinesses()
         }
     }
 }
@@ -19,8 +23,8 @@ extension BusinessesView {
     var cardsView : some View {
         ScrollView(.horizontal) {
             HStack(spacing: 0){
-                ForEach(0..<3, id: \.self) { _ in
-                    BusinessCardView()
+                ForEach(vm.businesses) { business in
+                    BusinessCardView(business: business)
                         .containerRelativeFrame(.horizontal, alignment: .center)
                         .scrollTransition(topLeading: .interactive, bottomTrailing: .interactive) { effect, phase in
                             effect
@@ -35,6 +39,11 @@ extension BusinessesView {
     var previousAndNextButtons : some View {
         HStack {
             Button("Prev"){}
+            Button("Get"){
+                Task{
+                    await vm.getBusinesses()
+                }
+            }
             Button("Next"){}
         }.buttonStyle(.bordered)
     }

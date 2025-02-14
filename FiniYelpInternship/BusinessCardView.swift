@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct BusinessCardView: View {
+    let business : Business
     var body: some View {
         GroupBox{
-            Image(.restuarant)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 300)
-                .clipped()
+            AsyncImage(url: URL(string: business.imageURL), content: { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 300)
+                    .clipped()
+            }, placeholder: {
+                ProgressView()
+            })
+                
                
-            Text("Skyscraper Resturant").font(.largeTitle)
+            Text(business.name).font(.largeTitle)
             Text("Business rating : 5")
                 .font(.headline)
         }.padding()
@@ -24,5 +30,5 @@ struct BusinessCardView: View {
 }
 
 #Preview {
-    BusinessCardView()
+    BusinessCardView(business: Business.example)
 }

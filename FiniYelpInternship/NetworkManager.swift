@@ -34,8 +34,8 @@ class NetworkManager {
      Used async await instead of closure.
     Modified it so it to take offset and limit as parameters
      */
-    func getData(offset: Int, limit: Int) async throws {
-        guard let location = locationManager.location else { return }
+    func getData(offset: Int, limit: Int) async throws -> [Business] {
+        guard let location = locationManager.location else { return []}
         let url = URL(string: "https://api.yelp.com/v3/businesses/search")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
@@ -59,6 +59,8 @@ class NetworkManager {
         ]
         let (data, _) = try await URLSession.shared.data(for: request)
         print(String(decoding: data, as: UTF8.self))
+        let decodedResult = try JSONDecoder().decode(YelpResult.self, from: data)
+        return decodedResult.businesses
     }
     
     
