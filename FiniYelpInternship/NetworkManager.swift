@@ -23,16 +23,24 @@ import Foundation
  */
 @Observable
 class NetworkManager {
+    
+    /*
+    Considered injecting location manager into the intializer. However, given the time constraints
+    desire for simplicity I instantianted it in the network manager.
+     */
+    let locationManager : LocationManager = LocationManager()
+    
     /*
      Used async await instead of closure.
     Modified it so it to take offset and limit as parameters
      */
     func getData(offset: Int, limit: Int) async throws {
+        guard let location = locationManager.location else { return }
         let url = URL(string: "https://api.yelp.com/v3/businesses/search")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
-            URLQueryItem(name: "latitude", value: "33.92392983504701"),
-            URLQueryItem(name: "longitude", value: "-84.34099727470453"),
+            URLQueryItem(name: "latitude", value: "\(location.coordinate.latitude)"),
+            URLQueryItem(name: "longitude", value: "\(location.coordinate.longitude)"),
             URLQueryItem(name: "term", value: "restaurants"),
             URLQueryItem(name: "radius", value: "1000"),
             URLQueryItem(name: "categories", value: ""),
