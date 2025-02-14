@@ -11,7 +11,7 @@ import SwiftUI
 struct FiniYelpInternshipApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BusinessesView()
         }
     }
 }
