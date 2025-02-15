@@ -17,30 +17,54 @@ struct BusinessCardView: View {
     
     var body: some View {
         GroupBox{
+            
+            
+            VStack{
+                AsyncImage(url: URL(string: business.imageURL), content: { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width, height: height)
+                        .clipped()
+                }, placeholder: {
+                    ProgressView()
+                })
+                .overlay{
+                    favoriteButton
+                }
+                Text(business.name).font(.largeTitle)
+                Text("Business rating : \(business.rating, specifier: "%0.1f")")
+                    .font(.headline)
+                
+                
+                
+            }
+        }.padding()
+    }
+    var favoriteButton : some View {
+        VStack{
             HStack{
                 Spacer()
-                Button(favorite ? "Favorite" : "Mark Favorite") {
+                Button {
                     favorite.toggle()
+                } label: {
+                    Image(systemName: favorite ? "star.fill" : "star")
+                        .foregroundStyle(Color.yellow)
+                        .font(.largeTitle)
                 }
-                .buttonStyle(.borderedProminent)
-                .foregroundStyle(favorite ? Color.yellow : Color.black)
+                .padding(8)
+                .background{
+                    Color(UIColor.systemBackground).opacity(0.2)
+                        .clipShape(Circle())
+                }
+                .padding(8)
             }
-            AsyncImage(url: URL(string: business.imageURL), content: { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: width, height: height)
-                    .clipped()
-            }, placeholder: {
-                ProgressView()
-            })
-            Text(business.name).font(.largeTitle)
-            Text("Business rating : \(business.rating, specifier: "%0.1f")")
-                .font(.headline)
-        }.padding()
+            Spacer()
+        }
     }
 }
 
 #Preview {
     BusinessCardView(business: Business.example)
 }
+
