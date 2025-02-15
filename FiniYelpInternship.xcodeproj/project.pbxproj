@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CA5586D02D60049B00F46045 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CA5586CF2D60049B00F46045 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CA55867E2D5FDF4A00F46045 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5586D02D60049B00F46045 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = FiniYelpInternship;
 			packageProductDependencies = (
+				CA5586CF2D60049B00F46045 /* SDWebImageSwiftUI */,
 			);
 			productName = FiniYelpInternship;
 			productReference = CA55866D2D5FDF4800F46045 /* FiniYelpInternship.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = CA5586642D5FDF4800F46045;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CA5586CE2D60049B00F46045 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CA55866E2D5FDF4800F46045 /* Products */;
 			projectDirPath = "";
@@ -560,6 +569,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA5586CE2D60049B00F46045 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA5586CF2D60049B00F46045 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA5586CE2D60049B00F46045 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA5586652D5FDF4800F46045 /* Project object */;
 }

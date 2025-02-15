@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "00801DFC-4171-4869-94AD-096A550D18E7"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82B1AFBF-E5E6-48AF-801F-ADCD84AB2F72"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiniYelpInternship/BusinessesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "getMoreBusinessesIfNeeded()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82B1AFBF-E5E6-48AF-801F-ADCD84AB2F72 - 92f81c6ec7e7503b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in FiniYelpInternship.BusinessesViewModel.getMoreBusinessesIfNeeded() async -&gt; ()"
+                  moduleName = "FiniYelpInternship.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/conneryoon/CodeFiles/Intuitive%20Med%20Work/FiniYelpInternship/FiniYelpInternship/BusinessesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+               <Location
+                  uuid = "82B1AFBF-E5E6-48AF-801F-ADCD84AB2F72 - 895fc90589ac9439"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in FiniYelpInternship.BusinessesViewModel.getMoreBusinessesIfNeeded() async -&gt; ()"
+                  moduleName = "FiniYelpInternship.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/conneryoon/CodeFiles/Intuitive%20Med%20Work/FiniYelpInternship/FiniYelpInternship/BusinessesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+               <Location
+                  uuid = "82B1AFBF-E5E6-48AF-801F-ADCD84AB2F72 - 66a901b1a21ce42b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in FiniYelpInternship.BusinessesViewModel.getMoreBusinessesIfNeeded() async -&gt; ()"
+                  moduleName = "FiniYelpInternship.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/conneryoon/CodeFiles/Intuitive%20Med%20Work/FiniYelpInternship/FiniYelpInternship/BusinessesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

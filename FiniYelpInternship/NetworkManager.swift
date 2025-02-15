@@ -21,7 +21,7 @@ import Foundation
  
  used the built in feature in the documentation to generate getData().
  */
-@Observable
+
 class NetworkManager {
     
     /*
@@ -35,16 +35,18 @@ class NetworkManager {
     Modified it so it to take offset and limit as parameters
      */
     func getData(offset: Int, limit: Int) async throws -> [Business] {
-        guard let location = locationManager.location else { return []}
+        guard let location = locationManager.location else {
+            return []
+        }
         let url = URL(string: "https://api.yelp.com/v3/businesses/search")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
             URLQueryItem(name: "latitude", value: "\(location.coordinate.latitude)"),
             URLQueryItem(name: "longitude", value: "\(location.coordinate.longitude)"),
             URLQueryItem(name: "term", value: "restaurants"),
-            URLQueryItem(name: "radius", value: "1000"),
-            URLQueryItem(name: "categories", value: ""),
-            URLQueryItem(name: "sort_by", value: "best_match"),
+//            URLQueryItem(name: "radius", value: "4000"),
+//            URLQueryItem(name: "categories", value: ""),
+//            URLQueryItem(name: "sort_by", value: "best_match"),
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "offset", value: "\(offset)"),
         ]
@@ -63,5 +65,7 @@ class NetworkManager {
         return decodedResult.businesses
     }
     
-    
+    init() {
+        locationManager.startUpdatingLocation()
+    }
 }

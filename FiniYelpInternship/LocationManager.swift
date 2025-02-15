@@ -21,8 +21,7 @@ class LocationManager : NSObject, CLLocationManagerDelegate{
         super.init()
         clLocationManager.delegate = self
         clLocationManager.desiredAccuracy = kCLLocationAccuracyBest
-        clLocationManager.requestWhenInUseAuthorization()//Modifed info pList to allow this
-        startUpdatingLocation()
+        clLocationManager.requestWhenInUseAuthorization()//Modifed info pList to allow this=
     }
    
     func startUpdatingLocation() {
@@ -31,7 +30,6 @@ class LocationManager : NSObject, CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations : [CLLocation]) {
         guard let location = locations.last else { return }
         DispatchQueue.main.async{
-            print("Current Location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
             self.location = location
         }
     }

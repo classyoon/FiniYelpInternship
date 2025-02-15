@@ -17,7 +17,7 @@ struct YelpResult: Codable {
     let businesses: [Business]
     let total: Int
 }
-struct Business: Codable, Identifiable, Hashable {
+struct Business: Codable, Identifiable, Hashable, Equatable {
     let id: String
     let name: String
     let imageURL: String
