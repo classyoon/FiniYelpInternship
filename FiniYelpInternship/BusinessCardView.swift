@@ -33,6 +33,8 @@ struct BusinessCardView: View {
                     favoriteButton
                 }
                 Text(business.name).font(.largeTitle)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
                 Text("Business rating : \(business.rating, specifier: "%0.1f")")
                     .font(.headline)
                 

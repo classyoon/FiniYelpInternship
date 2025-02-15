@@ -73,13 +73,16 @@ extension BusinessesView {
         .scrollPosition(id: $vm.currentBusiness)
         .scrollIndicators(.hidden)
     }
+    var backButtonIsDisabled : Bool {
+        vm.currentBusiness == vm.businesses.first
+    }
     var previousAndNextButtons : some View {
         HStack {
             Button("Prev"){
                 withAnimation {
                     vm.previousBusiness()
                 }
-            }
+            }.disabled(backButtonIsDisabled)
             Button("Next"){
                 withAnimation {
                     vm.nextBusiness()
