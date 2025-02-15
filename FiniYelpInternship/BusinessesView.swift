@@ -10,12 +10,34 @@ import SwiftUI
 struct BusinessesView: View {
     @State var vm = BusinessesViewModel()
     var body: some View {
+        if vm.businesses.count != 0 {
         VStack{
-            cardsView
-            previousAndNextButtons
+          
+                cardsView
+                previousAndNextButtons
                 
-        }.task{
-            await vm.getBusinesses()
+            }.task{
+                await vm.getBusinesses()
+            }
+        }else{
+            VStack{
+                ProgressView()
+                Text("Tap to Continue")
+                Button("Continue"){
+                    Task{
+                        await vm.getBusinesses()
+                    }
+                }.task {
+                    do {
+                        try await Task.sleep(for: .seconds(3))
+                        if vm.businesses.isEmpty {
+                            await vm.getBusinesses()
+                        }
+                    } catch {
+                        print("Could not force sleep, which makes loading the businesses unlikely.")
+                    }
+                }
+            }
         }
         
     }

@@ -33,7 +33,7 @@ class BusinessesViewModel {
             print("Next guard statement failed")
             return }
         
-        if index >= businesses.count - 3 {
+        if index >= businesses.count - 5 {
             Task{
                 await getBusinesses()
                 self.currentBusiness = businesses[index+1]
