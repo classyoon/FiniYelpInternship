@@ -16,12 +16,6 @@ struct BusinessesView: View {
                 
         }.task{
             await vm.getBusinesses()
-//            do {
-//                try await Task.sleep(for: .seconds(0.5))
-//                await vm.getBusinesses()
-//            } catch {
-//                print("\(error)")
-//            }
         }
         
     }
@@ -43,11 +37,12 @@ extension BusinessesView {
                             vm.currentBusiness = business
                             
                         }
-                        .task{
-                            
+                        .onChange(of: vm.currentBusiness, { oldValue, newValue in
+                            Task{
                                 await vm.getMoreBusinessesIfNeeded()
+                            }
                             
-                        }
+                        })
                 }
             }
             .scrollTargetLayout()
@@ -70,6 +65,16 @@ extension BusinessesView {
                 }
             }
         }.buttonStyle(.bordered)
+            .task{
+                do {
+                    try await Task.sleep(for: .seconds(3))//This is to try to give some time for location manager to do its thing
+                    if vm.businesses.count == 0 {
+                        await vm.getBusinesses()
+                    }
+                }catch{
+                    print("Error: failed to sleep")
+                }
+            }
     }
 }
 #Preview {

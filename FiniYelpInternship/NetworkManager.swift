@@ -44,9 +44,6 @@ class NetworkManager {
             URLQueryItem(name: "latitude", value: "\(location.coordinate.latitude)"),
             URLQueryItem(name: "longitude", value: "\(location.coordinate.longitude)"),
             URLQueryItem(name: "term", value: "restaurants"),
-//            URLQueryItem(name: "radius", value: "4000"),
-//            URLQueryItem(name: "categories", value: ""),
-//            URLQueryItem(name: "sort_by", value: "best_match"),
             URLQueryItem(name: "limit", value: "\(limit)"),
             URLQueryItem(name: "offset", value: "\(offset)"),
         ]

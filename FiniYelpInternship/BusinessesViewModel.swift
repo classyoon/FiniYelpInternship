@@ -81,7 +81,7 @@ class BusinessesViewModel {
             return
         }
         print("Past guard statement at \(currentIndex)")
-        if currentIndex >= businesses.count - 2
+        if currentIndex >= businesses.count - 3
         {
             print("Starting refresh task at \(currentIndex)")
             Task {
