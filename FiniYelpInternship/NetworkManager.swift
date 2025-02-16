@@ -28,16 +28,24 @@ class NetworkManager {
     Considered injecting location manager into the intializer. However, given the time constraints
     desire for simplicity I instantianted it in the network manager.
      */
-    let locationManager : LocationManager = LocationManager()
+    let locationManager : LocationManager
     
+    init(locationManager: LocationManager) {
+        self.locationManager = locationManager
+    }
     /*
      Used async await instead of closure.
     Modified it so it to take offset and limit as parameters
      */
+    @MainActor
     func getData(offset: Int, limit: Int) async throws -> [Business] {
+        print("Starting getting Data")
         guard let location = locationManager.location else {
+            print("Error: could not get location")
             return []
         }
+        print("Have location data")
+        
         let url = URL(string: "https://api.yelp.com/v3/businesses/search")!
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
@@ -57,12 +65,8 @@ class NetworkManager {
             "authorization": "Bearer itoMaM6DJBtqD54BHSZQY9WdWR5xI_CnpZdxa3SG5i7N0M37VK1HklDDF4ifYh8SI-P2kI_mRj5KRSF4_FhTUAkEw322L8L8RY6bF1UB8jFx3TOR0-wW6Tk0KftNXXYx"
         ]
         let (data, _) = try await URLSession.shared.data(for: request)
-        print(String(decoding: data, as: UTF8.self))
+//        print(String(decoding: data, as: UTF8.self))
         let decodedResult = try JSONDecoder().decode(YelpResult.self, from: data)
         return decodedResult.businesses
-    }
-    
-    init() {
-        locationManager.startUpdatingLocation()
     }
 }

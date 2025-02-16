@@ -10,22 +10,24 @@ import Foundation
 @MainActor
 @Observable
 class BusinessesViewModel {
-    var businesses: [Business] = []
-    var currentBusiness: Business?
-    var offset: Int = 0
-    var limit: Int = 10//TODO: Testing value, remember to changed back.
-    var errorMessage : String?
-    var isFetching = false
+    @MainActor var businesses: [Business] = []
+    @MainActor var currentBusiness: Business?
+    @MainActor var offset: Int = 0
+    @MainActor var limit: Int = 10//TODO: Testing value, remember to changed back.
+    @MainActor var errorMessage : String?
+    @MainActor var isFetching = false
     
-    private let networkManager = NetworkManager()
+    private let networkManager: NetworkManager
+    
+    init(locationManager: LocationManager) {
+        networkManager = NetworkManager(locationManager: locationManager)
+        
+        Task { @MainActor in
+            await getBusinesses()
+        }
+    }
     
     func nextBusiness() {
-//        if businesses.count == 0 {
-//            Task {
-//                await getBusinesses()
-//                currentBusiness = businesses.first
-//            }
-//        }
         guard let currentBusiness,
                 let index = businesses.firstIndex(of: currentBusiness),
               index < businesses.count - 1
@@ -80,11 +82,11 @@ class BusinessesViewModel {
             print("Get more business")
             return
         }
-        print("Past guard statement at \(currentIndex)")
+
         if currentIndex >= businesses.count - 3
         {
             print("Starting refresh task at \(currentIndex)")
-            Task {
+            Task { @MainActor in
                 await getBusinesses()
             }
             
